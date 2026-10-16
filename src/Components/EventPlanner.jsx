@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './EventPlanner.css';
 import Footer from './Footer';
 import CategoryCard from './CategoryCard';
@@ -72,6 +72,10 @@ const EventPlanner = () => {
     const handleAddEvent = (newEvent) => {      // 👈 needed
     setEvents([...events, newEvent]);
 }; 
+
+useEffect(() => {
+    document.title = `Event Planner (${events.length} ${events.length === 1 ? 'event' : 'events'})`;
+  }, [events]);
 
     return (
         <div className="event-planner-container">
