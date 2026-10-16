@@ -2,6 +2,7 @@ import React from 'react';
 import './EventPlanner.css'; // Import CSS file for styling
 import Footer from './Footer'; // include
 import CategoryCard from './CategoryCard';   // was CategoryGroup
+import FeatureCard from './FeatureCard';
 
 const eventCategories = [
     {
@@ -27,7 +28,32 @@ const eventCategories = [
     },
   ];
 
-  
+  const features = [
+  {
+    id: 1,
+    icon: '📅',
+    title: 'Easy Scheduling',
+    description: 'Pick dates, set reminders and never double-book again.',
+  },
+  {
+    id: 2,
+    icon: '👥',
+    title: 'Guest Management',
+    description: 'Create guest lists, send invites and track who is coming.',
+  },
+  {
+    id: 3,
+    icon: '💰',
+    title: 'Budget Tracking',
+    description: 'Keep every expense in one place and stay within budget.',
+  },
+  {
+    id: 4,
+    icon: '✅',
+    title: 'Task Checklists',
+    description: 'Break your event into small tasks and tick them off.',
+  },
+];
 
 const EventPlanner = () => {
     return (
@@ -51,6 +77,7 @@ const EventPlanner = () => {
 
 	{/* Section to list or categorize different types of events */}
     <section className="events_categories">
+    <h2>Categories</h2>
   {eventCategories.map((category) => (
     <CategoryCard
       key={category.id}
@@ -61,19 +88,19 @@ const EventPlanner = () => {
   ))}
 </section>
 	
-    {/* Section to highlight app features or functionalities */}
     <section className="features">
-		{/* Section heading */}
-		<h2>Features</h2>
-		{/* List of key platform features */}
-		<ul>
-			<li>Easy event creation and management</li>
-			<li>Customizable event templates</li>
-			<li>Guest list management</li>
-			<li>Real-time collaboration</li>
-			<li>Reminders and notifications</li>
-		</ul>
-	</section>
+  <h2>Features</h2>
+  <div className="features-grid">
+    {features.map((feature) => (
+      <FeatureCard
+        key={feature.id}
+        icon={feature.icon}
+        title={feature.title}
+        description={feature.description}
+      />
+    ))}
+  </div>
+</section>
 
 
     {/* Section to showcase user reviews or testimonials */}
