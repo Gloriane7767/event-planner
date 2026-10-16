@@ -1,6 +1,46 @@
 import React from 'react';
 import './EventPlanner.css'; // Import CSS file for styling
 import Footer from './Footer'; // include
+import CategoryGroup from './CategoryGroup';
+
+const eventCategories = [
+    {
+      id: 1,
+      title: 'Social Events',
+      events: [
+        'Birthday parties',
+        'Anniversary celebrations',
+        'Wedding receptions',
+        'Baby showers',
+        'Graduation parties',
+        'Family reunions',
+      ],
+    },
+    {
+      id: 2,
+      title: 'Entertainment Events',
+      events: [
+        'Concerts',
+        'Music festivals',
+        'Film screenings',
+        'Comedy shows',
+        'Art exhibitions',
+        'Cultural events',
+      ],
+    },
+    {
+      id: 3,
+      title: 'Community Events',
+      events: [
+        'Fundraising events',
+        'Charity galas',
+        'Volunteer drives',
+        'Neighborhood block parties',
+        'Community festivals',
+        'Cultural celebrations',
+      ],
+    },
+  ];
 
 const EventPlanner = () => {
     return (
@@ -22,41 +62,17 @@ const EventPlanner = () => {
     <button className="get-started-button">Get Started</button>
     </section>
 
-    {/* Section to list or categorize different types of events */}
-    <section className="events_categories">
-		{/* Social event types */}
-		<ul>
-			<h2>Social Events:</h2>
-			<li>Birthday parties</li>
-			<li>Anniversary celebrations</li>
-			<li>Wedding receptions</li>
-			<li>Baby showers</li>
-			<li>Graduation parties</li>
-			<li>Family reunions</li>
-		</ul>
-		{/* Entertainment-based event types */}
-		<ul>
-			<h2>Entertainment Events:</h2>
-			<li>Concerts</li>
-			<li>Music festivals</li>
-			<li>Film screenings</li>
-			<li>Comedy shows</li>
-			<li>Art exhibitions</li>
-			<li>Cultural events</li>
-		</ul>
-		{/* Community-focused event types */}
-		<ul>
-			<h2>Community Events:</h2>
-			<li>Fundraising events</li>
-			<li>Charity galas</li>
-			<li>Volunteer drives</li>
-			<li>Neighborhood block parties</li>
-			<li>Community festivals</li>
-			<li>Cultural celebrations</li>
-		</ul>
-	</section>
-
-
+	{/* Section to list or categorize different types of events */}
+        <section className="events_categories">
+  {eventCategories.map((category) => (
+    <CategoryGroup
+      key={category.id}
+      title={category.title}
+      events={category.events}
+    />
+  ))}
+</section>   {/* 👈 is this line there? */}
+	
     {/* Section to highlight app features or functionalities */}
     <section className="features">
 		{/* Section heading */}

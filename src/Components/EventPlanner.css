@@ -160,30 +160,47 @@
   color: #a29bfe;
   text-decoration: underline;
 }
-  
-  .events_categories h1{
-    background-color: gray;
-    text-align: center;
-  }
-.events_categories{
+
+/* 1. The section: holds all the cards in a row */
+.events_categories {
     display: flex;
-    gap: 30px;
-    justify-content: center;
-    
-}
-.events_categories ul{
-    background-color: rgba(0,0,0,0.2);
-    width: 270px;
-    /* padding: 0 10px; */
-}
-  .events_categories ul h2{
-    background-color: #e46a9d;
-    text-align: center;
-    padding: 5px 10px;
-    color: white;
+    flex-wrap: wrap;
+    gap: 20px;
   }
-  .events_categories ul li{
-    list-style-type: none;
-    font-size: 1.1rem;
-    line-height: 24px;
+  
+  /* 2. Each group: one card */
+  .category-group {
+    flex: 1;
+    min-width: 220px;
+    background: #f4e9e9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* 3. The heading inside each card */
+  .category-group h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #6c5ce7;
+    border-bottom: 2px solid #a29bfe;
+    padding-bottom: 8px;
+  }
+  
+  /* 4. The list and its items */
+  .category-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .category-group li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+  }
+  
+  .category-group li:last-child {
+    border-bottom: none;
   }
