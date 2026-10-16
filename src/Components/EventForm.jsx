@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, memo } from 'react';
+
 
 const EventForm = ({ onAddEvent, categories = [] }) => {
   const [name, setName] = useState('');
   const [eventType, setEventType] = useState('');   // starts empty
+  const nameInputRef = useRef(null);                 // 👈 new
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,11 +14,15 @@ const EventForm = ({ onAddEvent, categories = [] }) => {
 
     setName('');
     setEventType('');
+     nameInputRef.current.focus();                    // 👈 new
+    
   };
 
+  console.log('EventForm drew');
   return (
     <form className="event-form" onSubmit={handleSubmit}>
       <input
+        ref={nameInputRef}                           // 👈 new
         type="text"
         placeholder="Event name"
         value={name}
@@ -44,4 +50,4 @@ const EventForm = ({ onAddEvent, categories = [] }) => {
   );
 };
 
-export default EventForm;
+export default memo(EventForm);

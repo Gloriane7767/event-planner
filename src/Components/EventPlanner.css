@@ -280,4 +280,41 @@
     border-radius: 10px;
   }
 
- 
+ .search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* ==========================================
+   DARK THEME
+   ========================================== */
+   .event-planner-container.dark {
+    background: #1e272e;      /* replaces the pink pattern */
+    color: #f1f2f6;
+  }
+  
+  .dark .category-card,
+  .dark .feature-card,
+  .dark .testimonial-card,
+  .dark .planner-box,
+  .dark .thank-you {
+    background: #2d3436;
+    border-color: #636e72;
+    color: #f1f2f6;
+  }
+  
+  .dark .category-card li {
+    border-bottom-color: #636e72;
+  }
+  
+  .dark .feature-card p {
+    color: #b2bec3;
+  }
+  
+  .dark .event-list li {
+    border-bottom-color: #636e72;
+  }

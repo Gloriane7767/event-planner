@@ -1,13 +1,12 @@
-
-import './App.css'
-import EventPlanner from './Components/EventPlanner'
+import EventPlanner from './Components/EventPlanner';
+import { ThemeProvider } from './Components/ThemeContext';
 
 function App() {
   return (
- <>
- <EventPlanner/>
- </>
-  )
+    <ThemeProvider>
+      <EventPlanner />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
