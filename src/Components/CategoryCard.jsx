@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CategoryGroup = ({ title, events }) => {
+const CategoryCard = ({ icon, title, events }) => {
   return (
-    <div className="category-group">
-      <h2>{title}:</h2>
+    <div className="category-card">
+      <h2>{icon} {title}</h2>
       <ul>
         {events.map((eventName) => (
           <li key={eventName}>{eventName}</li>
@@ -13,4 +13,4 @@ const CategoryGroup = ({ title, events }) => {
   );
 };
 
-export default CategoryGroup;
+export default CategoryCard;

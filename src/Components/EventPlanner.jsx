@@ -1,46 +1,33 @@
 import React from 'react';
 import './EventPlanner.css'; // Import CSS file for styling
 import Footer from './Footer'; // include
-import CategoryGroup from './CategoryGroup';
+import CategoryCard from './CategoryCard';   // was CategoryGroup
 
 const eventCategories = [
     {
       id: 1,
+      icon: '🎉',
       title: 'Social Events',
-      events: [
-        'Birthday parties',
-        'Anniversary celebrations',
-        'Wedding receptions',
-        'Baby showers',
-        'Graduation parties',
-        'Family reunions',
-      ],
+      events: ['Birthday parties', 'Anniversary celebrations', 'Wedding receptions',
+               'Baby showers', 'Graduation parties', 'Family reunions'],
     },
     {
       id: 2,
+      icon: '🎤',
       title: 'Entertainment Events',
-      events: [
-        'Concerts',
-        'Music festivals',
-        'Film screenings',
-        'Comedy shows',
-        'Art exhibitions',
-        'Cultural events',
-      ],
+      events: ['Concerts', 'Music festivals', 'Film screenings',
+               'Comedy shows', 'Art exhibitions', 'Cultural events'],
     },
     {
       id: 3,
+      icon: '🤝',
       title: 'Community Events',
-      events: [
-        'Fundraising events',
-        'Charity galas',
-        'Volunteer drives',
-        'Neighborhood block parties',
-        'Community festivals',
-        'Cultural celebrations',
-      ],
+      events: ['Fundraising events', 'Charity galas', 'Volunteer drives',
+               'Neighborhood block parties', 'Community festivals', 'Cultural celebrations'],
     },
   ];
+
+  
 
 const EventPlanner = () => {
     return (
@@ -63,15 +50,16 @@ const EventPlanner = () => {
     </section>
 
 	{/* Section to list or categorize different types of events */}
-        <section className="events_categories">
+    <section className="events_categories">
   {eventCategories.map((category) => (
-    <CategoryGroup
+    <CategoryCard
       key={category.id}
+      icon={category.icon}
       title={category.title}
       events={category.events}
     />
   ))}
-</section>   {/* 👈 is this line there? */}
+</section>
 	
     {/* Section to highlight app features or functionalities */}
     <section className="features">
