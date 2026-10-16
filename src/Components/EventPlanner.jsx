@@ -5,6 +5,7 @@ import CategoryCard from './CategoryCard';
 import FeatureCard from './FeatureCard';
 import TestimonialCard from './TestimonialCard';
 import ContactForm from './ContactForm';
+import EventForm from './EventForm'; 
 
 const eventCategories = [
     {
@@ -67,17 +68,21 @@ const EventPlanner = () => {
     const [showPlanner, setShowPlanner] = useState(false);
     const [clicks, setClicks] = useState(0)
 
+    const [events, setEvents] = useState([]);   // 👈 needed
+    const handleAddEvent = (newEvent) => {      // 👈 needed
+    setEvents([...events, newEvent]);
+}; 
+
     return (
         <div className="event-planner-container">
-        
-
-    {/* Page Header */}
-    <header>
-        <h1>Welcome to Event Planner</h1>
-    </header>
-
-    {/* Section for describing the purpose or overview of the app */}
-    <section className="description">
+          {/* 1. Page Header */}
+          <header>
+            <h1>Welcome to Event Planner</h1>
+          </header>
+    
+          {/* 2. Description: the Get Started button and planner box */}
+                             
+          <section className="description">
   <p>
     Plan and organize your events effortlessly with Event Planner. From
     birthdays to corporate meetings, we've got you covered.
@@ -96,16 +101,31 @@ const EventPlanner = () => {
   <p>Clicked {clicks} {clicks === 1 ? 'time' : 'times'}</p>
 
   <button className="reset-button" onClick={() => setClicks(0)}>
-  Reset counter
-</button>
+    Reset counter
+  </button>
 
   {showPlanner && (
     <div className="planner-box">
       <h3>🎉 Your Event Planner</h3>
-      <p>This is where you will add your events. Coming in the next step!</p>
+
+      <EventForm onAddEvent={handleAddEvent} categories={eventCategories} />
+
+      <p>Total events: {events.length}</p>
+
+      {events.length === 0 ? (
+        <p>No events yet. Add your first one!</p>
+      ) : (
+        <ul className="event-list">
+          {events.map((ev) => (
+            <li key={ev.id}>
+              {ev.name} ({ev.category})
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )}
-
+</section>
   {/* ===== VERSION 1: before the counter (one action) =====
 <button
   className="get-started-button"
@@ -128,7 +148,6 @@ const EventPlanner = () => {
 
 <p>Clicked {clicks} times</p>
 */}
-</section>
 
 	{/* Section to list or categorize different types of events */}
     <section className="events_categories">
