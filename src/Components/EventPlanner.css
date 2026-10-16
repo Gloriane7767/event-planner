@@ -59,21 +59,22 @@
   }
   
   .get-started-button,
-  .submit-button {
-    background-color: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .get-started-button:hover,
-  .submit-button:hover {
-    background-color: var(--accent-dark);
-  }
-  
+.submit-button,
+.reset-button {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-button:hover,
+.submit-button:hover,
+.reset-button:hover {
+  background-color: var(--accent-dark);
+}
   /* ==========================================
      5. HEADER + DESCRIPTION
      ========================================== */
@@ -270,3 +271,13 @@
     color: var(--primary);
   }
 
+  .planner-box {
+    max-width: 500px;
+    margin: 20px auto 0;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 2px dashed var(--accent);
+    border-radius: 10px;
+  }
+
+ 

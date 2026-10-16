@@ -1,7 +1,7 @@
-import React from 'react';
-import './EventPlanner.css'; // Import CSS file for styling
-import Footer from './Footer'; // include
-import CategoryCard from './CategoryCard';   // was CategoryGroup
+import React, { useState } from 'react';
+import './EventPlanner.css';
+import Footer from './Footer';
+import CategoryCard from './CategoryCard';
 import FeatureCard from './FeatureCard';
 import TestimonialCard from './TestimonialCard';
 import ContactForm from './ContactForm';
@@ -64,8 +64,12 @@ const testimonials = [
 ];
 
 const EventPlanner = () => {
+    const [showPlanner, setShowPlanner] = useState(false);
+    const [clicks, setClicks] = useState(0)
+
     return (
         <div className="event-planner-container">
+        
 
     {/* Page Header */}
     <header>
@@ -74,14 +78,57 @@ const EventPlanner = () => {
 
     {/* Section for describing the purpose or overview of the app */}
     <section className="description">
-        {/* Description content goes here */}
-        <p>
-        Plan and organize your events effortlessly with Event Planner. From
-        birthdays to corporate meetings, we've got you covered.
-    </p>
-    {/* Primary call-to-action button */}
-    <button className="get-started-button">Get Started</button>
-    </section>
+  <p>
+    Plan and organize your events effortlessly with Event Planner. From
+    birthdays to corporate meetings, we've got you covered.
+  </p>
+
+  <button
+    className="get-started-button"
+    onClick={() => {
+      setShowPlanner(!showPlanner);
+      setClicks(clicks + 1);
+    }}
+  >
+    {showPlanner ? 'Hide Planner' : 'Get Started'}
+  </button>
+
+  <p>Clicked {clicks} {clicks === 1 ? 'time' : 'times'}</p>
+
+  <button className="reset-button" onClick={() => setClicks(0)}>
+  Reset counter
+</button>
+
+  {showPlanner && (
+    <div className="planner-box">
+      <h3>🎉 Your Event Planner</h3>
+      <p>This is where you will add your events. Coming in the next step!</p>
+    </div>
+  )}
+
+  {/* ===== VERSION 1: before the counter (one action) =====
+<button
+  className="get-started-button"
+  onClick={() => setShowPlanner(!showPlanner)}
+>
+  {showPlanner ? 'Hide Planner' : 'Get Started'}
+</button>
+*/}
+
+{/* ===== VERSION 2: with the counter (two actions) =====
+<button
+  className="get-started-button"
+  onClick={() => {
+    setShowPlanner(!showPlanner);
+    setClicks(clicks + 1);
+  }}
+>
+  {showPlanner ? 'Hide Planner' : 'Get Started'}
+</button>
+
+<p>Clicked {clicks} times</p>
+*/}
+</section>
 
 	{/* Section to list or categorize different types of events */}
     <section className="events_categories">
