@@ -1,28 +1,25 @@
 import React, { useState, useRef, memo } from 'react';
 
-
 const EventForm = ({ onAddEvent, categories = [] }) => {
   const [name, setName] = useState('');
-  const [eventType, setEventType] = useState('');   // starts empty
-  const nameInputRef = useRef(null);                 // 👈 new
+  const [eventType, setEventType] = useState('');
+  const nameInputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name.trim() || !eventType) return;         // need a name AND a type
+    if (!name.trim() || !eventType) return;
 
     onAddEvent({ id: Date.now(), name: name, category: eventType });
 
     setName('');
     setEventType('');
-     nameInputRef.current.focus();                    // 👈 new
-    
+    nameInputRef.current.focus();
   };
 
-  console.log('EventForm drew');
   return (
     <form className="event-form" onSubmit={handleSubmit}>
       <input
-        ref={nameInputRef}                           // 👈 new
+        ref={nameInputRef}
         type="text"
         placeholder="Event name"
         value={name}
@@ -31,7 +28,6 @@ const EventForm = ({ onAddEvent, categories = [] }) => {
 
       <select value={eventType} onChange={(e) => setEventType(e.target.value)}>
         <option value="">Choose event type</option>
-
         {categories.map((cat) => (
           <optgroup key={cat.id} label={cat.title}>
             {cat.events.map((eventName) => (
