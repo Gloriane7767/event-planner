@@ -76,7 +76,57 @@ import React, {
     const [showPlanner, setShowPlanner] = useState(false);
     const [clicks, setClicks] = useState(0);
     const [search, setSearch] = useState('');
-    const [events, dispatch] = useReducer(eventsReducer, []);
+ {/* // const [events, dispatch] = useReducer(eventsReducer, []);   // OLD
+const [events, dispatch] = useReducer(eventsReducer, [], () => {
+  try {
+    const saved = localStorage.getItem('events');
+    return saved ? JSON.parse(saved) : [];
+  } catch (error) {
+    return [];
+  }
+});
+
+useEffect(() => {
+  try {
+    localStorage.setItem('events', JSON.stringify(events));
+  } catch (error) {
+    console.log('Could not save', error);
+  }
+}, [events]);*/}
+
+/* ---------- OLD: events started empty every time (nothing was loaded) ----------
+const [events, dispatch] = useReducer(eventsReducer, []);
+*/
+
+/* ---------- NEW: load saved events when the page starts ---------- */
+const [events, dispatch] = useReducer(eventsReducer, [], (initial) => {
+    try {
+      const saved = localStorage.getItem('events');
+      return saved ? JSON.parse(saved) : initial;
+    } catch (error) {
+      return initial;
+    }
+  });
+  
+  /* ---------- Tab title effect (still active, unchanged) ---------- */
+  useEffect(() => {
+    document.title = `Event Planner (${events.length} ${events.length === 1 ? 'event' : 'events'})`;
+  }, [events]);
+  
+  /* ---------- OLD: save effect (first draft, no try/catch)
+  useEffect(() => {
+    localStorage.setItem('events', JSON.stringify(events));
+  }, [events]);
+  */
+  
+  /* ---------- NEW: save events every time they change ---------- */
+  useEffect(() => {
+    try {
+      localStorage.setItem('events', JSON.stringify(events));
+    } catch (error) {
+      console.log('Could not save', error);
+    }
+  }, [events]);
   
     /* Callbacks */
     const handleAddEvent = useCallback((newEvent) => {

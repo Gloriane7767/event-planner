@@ -1,11 +1,15 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext } from 'react';
+import useLocalStorage from './useLocalStorage';
 
-// 1. Create the channel
 export const ThemeContext = createContext();
 
-// 2. Create the Provider (the radio station)
 export const ThemeProvider = ({ children }) => {
+  /* OLD: forgot the theme on every refresh
   const [theme, setTheme] = useState('light');
+  */
+
+  /* NEW: same as useState, but saved in localStorage under the key 'theme' */
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
