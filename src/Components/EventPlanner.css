@@ -347,3 +347,77 @@
 }
 
 .dark .navbar a { color: #dfe6e9; }
+
+.status-message {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 40px 0;
+}
+
+.status-message.error {
+  color: #d63031;
+}
+
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.idea-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+  text-align: left;
+}
+
+.idea-card h3 {
+  margin-top: 0;
+  color: var(--primary);
+  text-transform: capitalize;
+}
+
+.dark .idea-card {
+  background: #2d3436;
+  border-color: #636e72;
+  color: #f1f2f6;
+}
+/* Ideas page */
+.status-message {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 40px 0;
+}
+
+.status-message.error {
+  color: #d63031;
+}
+
+.ideas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.idea-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+  text-align: left;
+}
+
+.idea-card h3 {
+  margin-top: 0;
+  color: var(--primary);
+  text-transform: capitalize;
+}
+
+.dark .idea-card {
+  background: #2d3436;
+  border-color: #636e72;
+  color: #f1f2f6;
+}

@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import { ThemeContext } from './ThemeContext';
 import Home from '../Pages/Home';
 import EventsPage from '../Pages/EventsPage';
+import IdeasPage from '../Pages/IdeasPage';
 import ContactPage from '../Pages/ContactPage';
 import NotFound from '../Pages/NotFound';
 
@@ -26,6 +27,7 @@ const EventPlanner = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/ideas" element={<IdeasPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
