@@ -3,10 +3,12 @@ import { Routes, Route } from 'react-router-dom';
 import './EventPlanner.css';
 import Footer from './Footer';
 import Navbar from './Navbar';
+import ProtectedRoute from './ProtectedRoute';
 import { ThemeContext } from './ThemeContext';
 import Home from '../Pages/Home';
 import EventsPage from '../Pages/EventsPage';
 import IdeasPage from '../Pages/IdeasPage';
+import LoginPage from '../Pages/LoginPage';
 import ContactPage from '../Pages/ContactPage';
 import NotFound from '../Pages/NotFound';
 
@@ -26,8 +28,16 @@ const EventPlanner = () => {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/events" element={<EventsPage />} />
+        <Route
+          path="/events"
+          element={
+            <ProtectedRoute>
+              <EventsPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/ideas" element={<IdeasPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
