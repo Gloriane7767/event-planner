@@ -3,28 +3,37 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Components/AuthContext';
 
 const LoginPage = () => {
-  const { login } = useAuth();
+  const { login, signup } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSignup, setIsSignup] = useState(false);
   const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setBusy(true);
 
-    const success = login(email, password);
-
-    if (success) {
+    try {
+      if (isSignup) {
+        await signup(email, password);
+      } else {
+        await login(email, password);
+      }
       navigate('/events');
-    } else {
-      setError('Wrong password. Hint: it is 1234');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setBusy(false);
     }
   };
 
   return (
     <section className="contact">
-      <h2 className="section-title">Log in</h2>
+      <h2 className="section-title">{isSignup ? 'Create account' : 'Log in'}</h2>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -36,15 +45,24 @@ const LoginPage = () => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Password (at least 6 characters)"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="submit-button">Log in</button>
+        <button type="submit" className="submit-button" disabled={busy}>
+          {busy ? 'Please wait...' : isSignup ? 'Sign up' : 'Log in'}
+        </button>
       </form>
 
       {error && <p className="status-message error">{error}</p>}
+
+      <p>
+        {isSignup ? 'Already have an account?' : 'New here?'}{' '}
+        <button className="reset-button" onClick={() => setIsSignup(!isSignup)}>
+          {isSignup ? 'Log in' : 'Create account'}
+        </button>
+      </p>
     </section>
   );
 };
